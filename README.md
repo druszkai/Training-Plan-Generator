@@ -1,3 +1,87 @@
+***MI Edzésterv Generátor***
+
+Ez a projekt a Szoftverfejlesztés MI támogatással tantárgy házi feladatára készült.
+Az alkalmazás egy mesterséges intelligenciával (Google Gemini) támogatott webes felület, amely személyre szabott edzésterveket és táplálkozási tanácsokat generál a felhasználó fizikai paraméterei alapján.
+
+**📂 Fájlszerkezet és Tartalom**
+
+Hogy könnyen eligazodj a repository-ban, itt láthatod a legfontosabb elemeket:
+
+    . src/: A teljes forráskód mappája.
+
+    . src/app.py: A Backend belépési pontja (FastAPI szerver).
+
+    . src/database.py: Adatbázis konfiguráció és modellek.
+
+    . src/schemas.py: Adatvalidációs sémák.
+
+    . src/frontend/: A React alapú kliensoldali alkalmazás kódja.
+
+    . SPECIFICATION.md: A szoftver részletes specifikációja (követelmények, user story-k).
+
+    . DOKUMENTACIO.md: Részletes felhasználói és fejlesztői dokumentáció.
+
+    . README.md: Ez a fájl (telepítési útmutató + MI használati napló).
+
+**🚀 Telepítési és Futtatási Útmutató**
+
+A rendszer futtatásához két külön terminál ablakra lesz szükség (egy a Szervernek, egy a Kliensnek).
+
+0. Előfeltételek
+
+    Python 3.10+
+
+    Node.js 18+
+
+    Google Gemini API kulcs (ingyenesen beszerezhető a Google AI Studio-ból).
+
+1. Backend (Szerver) Indítása
+
+    Nyisd meg az első terminált, és navigálj a src mappába:
+
+    cd src
+
+    1. lépés: Környezeti változók beállítása
+    Hozz létre egy .env nevű fájlt (kiterjesztés nélkül) a src mappában, és másold bele a kulcsodat:
+
+    GEMINI_API_KEY=IDE_MASOLD_A_GOOGLE_API_KULCSODAT
+
+
+    2. lépés: Csomagok telepítése
+
+    pip install fastapi uvicorn sqlalchemy google-generativeai python-dotenv
+
+
+    3. lépés: Szerver indítása
+
+    python -m uvicorn app:app --reload
+
+
+    Ha sikeres, a szerver a http://127.0.0.1:8000 címen figyel.
+
+2. Frontend (Kliens) Indítása
+
+    Nyisd meg a második terminált, és navigálj a frontend mappába:
+
+    cd src/frontend
+
+
+    1. lépés: Csomagok telepítése
+
+    npm install
+
+
+    2. lépés: Alkalmazás indítása
+        npm run dev
+
+    A böngészőben nyisd meg a megjelenő linket (általában: http://localhost:5173).
+
+**🤖 MI Használat Dokumentációja (AI Log)**
+
+Alább található a fejlesztés során alkalmazott promptok, a kapott válaszok és a hibaelhárítási lépések részletes naplója.
+
+####################################################
+
 1.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -15,6 +99,7 @@ Feladatod ezen rövid specifikációt bővíteni, fontosabb szerepköröket, for
 **EREDMÉNY:** Elkészítette a SPECIFICATION.md fájlban található, már általam formázott specifikációt. A lényege azonos azzal, amit az MI írt. Ezt validáltam és megfelelőnek ítéltem további promptolás nélkül.
 
 ####################################################
+
 2.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -37,6 +122,7 @@ Az MI elkészítette a database.py első verzióját a kért módon. Elmondta em
 
 
 ####################################################
+
 3.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -53,6 +139,7 @@ schemas.py - ez mondja meg mit várunk a frontendtől
 main.py - összekötő, fő logikát tartalmazó egység
 
 ####################################################
+
 4.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -69,6 +156,7 @@ Legenerálta a schemas.py fájl első verzióját. Szerepel benne:
 függvények.
 
 ####################################################
+
 5.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -83,6 +171,7 @@ Kösd össze benne az adatbázis használattal és a sémákkal foglalkozó rés
 Létrehozta a main.py fájlt. Definiálta a megfelelő importokat, illetve a megfelelő @post és @get api hívásokat.
 
 ####################################################
+
 6.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -104,6 +193,7 @@ Segíts a hiba elhárításában.
 Az MI segítette diagnosztikával kiderült, hogy a python modulkeresési útvonala nem tartalmazta a main modult. A hibát sikeresen elhárítottuk a könyvtárstruktúra újrakonfigurálásával. Ezek után sikeresen elindult az alkalmazás a 8000 porton. A tesztelés sikeres volt.
 
 ####################################################
+
 7.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -122,6 +212,7 @@ A kliensoldali architektúrát átbeszéltük. Az MI komponens alapú fejleszté
     . Dinamikus routing generált ID alapján
 
 ####################################################
+
 8.
 **DÁTUM:** 2025.11.28
 **AI:** Gemini AI
@@ -135,8 +226,8 @@ Elfogadom az ajánlott architektúrát. Add meg a szükséges kódot a react-rou
 Megadta a terminálból történő telepítéshez szükséges kódokat. Javasolta a bootstrap telepítését is a kézzel irandó css elkerülése érdekében.
 
 ####################################################
-9.
 
+9.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
 **RÉSZ:** Frontend
@@ -151,6 +242,7 @@ Az index.html-t alább láthatod:
 Megfelelően módosította az index.html fájlt.
 
 ####################################################
+
 10.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -167,6 +259,7 @@ Először csak hozz létre két egyszerű placeholder komponenst (HomePage.jsx, 
 Létrehozta a main.jsx és App.jsx fájlokat, amelyek teszteléséhez is útmutatót készített. A tesztelés sikeres volt.
 
 ####################################################
+
 11.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -180,6 +273,7 @@ Folytasd a feladatot az űrlap implementálásával. A fájl neve legyen Trainin
 Implementálta a TrainingForm, ResultPage komponenseket, illetve a HomePage oldalt a specifikációjuk szerint. Emellett eltávolította a tesztelésre használt placeholder elemeket is az App.jsx fájlból.
 
 ####################################################
+
 12.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -193,6 +287,7 @@ A backend szervert nem sikerült elérnie a react-nak. Mi lehet a probléma?
 Nem futott valójában a backend szerver. Tanulság, hogy két terminál szükséges: egy a frontend-nek, egy a backend-nek.
 
 ####################################################
+
 13.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -206,6 +301,7 @@ Minden működik. Most az MI implementáció lenne a következő, amihez én egy
 Vázolta a főbb lépéseket az MI implementációhoz, mint az API kulcs használata, gemini telepítése, rendszer és felhasználói promptok megírása, majd végül a main.py módosítása.
 
 ####################################################
+
 14.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -221,6 +317,7 @@ A válasz formátumára ügyelj, hogy illeszkedjen a frontendben specifikáltakr
 Módosította a main.py-t. Lecserélte a benne lévő mock MI hívásokat valódira, azonban hibába futott. A hiba a Gemini API kulcs nem megfelelő használata volt.
 
 ####################################################
+
 15.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -237,6 +334,7 @@ Segíts a hiba kijavításában. Ellenőrizd a kulcsomat és az elérhető model
 Rövid troubleshooting után az MI generálta a test_gemini.py-ban található script-et, aminek kimenetének elküldésével megfelelően működő lett a kód. A frontend és backend megfelelően kommunikálnak.
 
 ####################################################
+
 16.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -250,6 +348,7 @@ Módosítsd megfelelően a TrainingForm.jsx, hogy már a nemet is megfelelően h
 Az új TrainingForm.jsx fájl megfelelően formázva, implementálva a nemekkel. Emellett javította a main.py-ban lévő kódomat is, hogy az megfelelően adja át a promptot az MI-nek.
 
 ####################################################
+
 17.
 **DÁTUM:** 2025.11.28.
 **AI:** Gemini AI
@@ -269,6 +368,7 @@ Elküldöm neked a házi feladat dokumentálásához tartozó formai követelmé
 Generált egy várt részletességű és igényességű szöveget, amit nekem már csak .docx fájlba kellett beillesztenem.
 
 ####################################################
+
 18.
 **DÁTUM:** 2025.11.30.
 **AI:** Gemini AI
@@ -280,3 +380,19 @@ Mellékeltem a követelményeket és specifikációt, amely szerint ezt a progra
 
 **EREDMÉNY:**
 A validációt megfelelően elvégezte. Kézi ellenőrzéssel nem találtam számottevő hibát. Szólt, hogy nem gpt hanem gemini modellt használunk, illetve az újonnan felvett nem attribútumot szintén át kell adni a generatív MI számára.
+
+####################################################
+
+19.
+**DÁTUM:** 2025.11.30.
+**AI:** Gemini AI
+**RÉSZ:** README.md
+**CÉL:** README.md fájl elejére rövid tartalom generálása.
+
+**PROMPT:**
+Adj egy rövid bevezető szöveget a readme.md fájl elejére, ahol látható, hogy mit hol lehet megtalálni, illetve egy rövid működési útmutató is szerepel benne.
+
+A readme.md fájl végén lesz a jelenlegi prompts.md tartalma, így az rögtön látható lesz.
+
+**EREDMÉNY:**
+Megszerkesztve legenerálta a jelenleg látható szöveget a README.mf fájl elejére.
