@@ -13,6 +13,7 @@ class TrainingPlanCreate(BaseModel):
     age: int                # Életkor (pl. 25)
     weight: int             # Testsúly (kg)
     height: int             # Magasság (cm) - a BMI számításhoz hasznos lehet
+    gender: str             # Nem (pl. "male", "female")
     fitness_level: str      # Edzettségi szint (pl. "beginner", "advanced")
     goal: str               # Cél (pl. "weight_loss", "muscle_gain")
     days_per_week: int      # Hány napot ér rá edzeni egy héten
